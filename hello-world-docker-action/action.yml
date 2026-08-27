@@ -20,6 +20,6 @@ jobs:
       # actions/hello-world-docker-action@v1.2.3
       - name: Print to Log
         id: print-to-log
-        uses: actions/hello-world-docker-action@main
+        uses: actions/hello-world-docker-action@f3e7406fbe2c4bc136c4435d776b3eb465aac91a
         with:
           who-to-greet: ${{ inputs.who-to-greet }}
