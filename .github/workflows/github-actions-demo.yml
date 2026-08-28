@@ -54,3 +54,16 @@ jobs:
     steps:
       - name: Run tests
         run: echo "Testing..."
+        
+  Load-Test:
+    name: Load-Test
+    needs: Test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    environment: Load-Test
+
+    steps:
+      - name: Run tests
+        run: |
+          echo "Load Testing..."
+          sleep 15
