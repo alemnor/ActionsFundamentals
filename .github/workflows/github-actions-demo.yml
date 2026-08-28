@@ -12,10 +12,13 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to deploy to'
-        type: environment
+        description: 'Target environment'
         required: true
-
+        type: choice
+        options:
+          - Test
+          - Load-Test
+          - Production
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -67,3 +70,44 @@ jobs:
         run: |
           echo "Load Testing..."
           sleep 15
+          
+  Production:
+    name: Production
+    needs:
+      - Test
+      - Load-Test
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event_name == 'workflow_dispatch' &&
+      inputs.environment == 'Production'
+
+    environment:
+      name: Production
+      url: https://writeabout.net
+
+    steps:
+      - name: Deployment Step 1
+        run: |
+          echo "Step 1 deploying..."
+          sleep 10
+
+      - name: Deployment Step 2
+        run: |
+          echo "Step 2 deploying..."
+          sleep 10
+
+      - name: Deployment Step 3
+        run: |
+          echo "Step 3 deploying..."
+          sleep 10
+
+      - name: Deployment Step 4
+        run: |
+          echo "Step 4 deploying..."
+          sleep 10
+
+      - name: Deployment Step 5
+        run: |
+          echo "Step 5 deploying..."
+          sleep 10
