@@ -1,6 +1,6 @@
 # GitHub Actions Fundamentals
 
-Repo for the `GitHub Actions Fundamentals` training. Shirley's edits
+Repo for the `GitHub Actions Fundamentals` training. Shirley's edits. BLAh, Blah, blah...
 
 ## 👉 Objectives
 
